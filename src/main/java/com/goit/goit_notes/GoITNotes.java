@@ -8,12 +8,12 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 
 
 @SpringBootApplication(exclude = FlywayAutoConfiguration.class)
-public class GoIT_Notes {
+public class GoITNotes {
 
     public static void main(String[] args) {
 
         new SpringApplicationBuilder()
-            .sources(GoIT_Notes.class)
+            .sources(GoITNotes.class)
             .bannerMode(Banner.Mode.OFF)
             .contextFactory(new ContextFactory())
             .build()
