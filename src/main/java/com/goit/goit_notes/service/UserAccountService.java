@@ -4,6 +4,7 @@ import com.goit.goit_notes.dto.UserAccountDto;
 import com.goit.goit_notes.entity.UserAccountEntity;
 import com.goit.goit_notes.mapper.AccountMapper;
 import com.goit.goit_notes.repository.UserAccountRepository;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +13,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
+@Data
 @Service
 public class UserAccountService implements UserDetailsService {
 
@@ -29,6 +33,10 @@ public class UserAccountService implements UserDetailsService {
     @Override
     public UserAccountDto loadUserByUsername(String username) throws UsernameNotFoundException {
         return accountMapper.mapEntityToDto(userAccountRepository.findUserAccountEntityByUsername(username));
+    }
+
+    public List<UserAccountEntity> findAll() {
+        return userAccountRepository.findAll();
     }
 
     public void createUser(UserDetails user) {

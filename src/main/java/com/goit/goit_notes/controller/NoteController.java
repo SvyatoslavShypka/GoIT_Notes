@@ -3,6 +3,7 @@ package com.goit.goit_notes.controller;
 import com.goit.goit_notes.dto.NoteDto;
 import com.goit.goit_notes.entity.Note;
 import com.goit.goit_notes.service.NoteService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,13 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @RequestMapping("/note")
 @Controller
+@RequiredArgsConstructor
 public class NoteController {
 
     private final NoteService noteService;
-
-    public NoteController(NoteService noteService) {
-        this.noteService = noteService;
-    }
 
     @Secured({"ADMIN", "SUPER_ADMIN"})
     @GetMapping("/edit")

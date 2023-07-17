@@ -13,28 +13,43 @@
   </head>
   <body>
     <div th:switch="${notes.size()}">
-      <h2 th:case="0">No notes yet!</h2>
+      <h2 th:case="0" style="color: red">No notes yet!</h2>
       <div th:case="*">
-        <h2>TODO Notes (DELETE restricted)</h2>
-        <table>
-          <thead>
+        <h2 style="color: green">TODO Notes (DELETE restricted)</h2>
+        <table class="table table-striped">
+          <thead class="thead-light">
             <tr>
-              <th>Title</th>
-              <th>Content</th>
-              <th>Edit</th>
+              <th scope="col">Title</th>
+              <th scope="col">Content</th>
+              <th scope="col">Edit</th>
             </tr>
           </thead>
           <tbody>
             <tr th:each="note : ${notes}">
-              <td th:text="${note.title}"></td>
+              <td scope="row" th:text="${note.title}"></td>
               <td th:text="${note.content}"></td>
-              <td><a th:href="@{/note/edit/{id}(id=${note.id})}">Edit</a></td>
+              <td>
+                <a
+                  th:href="@{/note/edit/{id}(id=${note.id})}"
+                  type="button"
+                  class="btn btn-warning"
+                  >Edit
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p><a href="/note/edit">Add a new note</a></p>
-      <p><a href="/logout">Log out</a></p>
+      <div>
+        <button type="button" class="btn btn-success" href="/note/edit">
+          Add a new note
+        </button>
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary" href="/logout">
+          Log out
+        </button>
+      </div>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

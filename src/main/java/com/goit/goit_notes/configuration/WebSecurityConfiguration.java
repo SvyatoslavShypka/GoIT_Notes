@@ -21,15 +21,15 @@ public class WebSecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
-        requestCache.setMatchingRequestParameterName("mycustomparameter");
-
-
+//        HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
+//        requestCache.setMatchingRequestParameterName("");
 
         http
+/*
                 .requestCache((cache) -> cache
                         .requestCache(requestCache)
                 )
+*/
                 .httpBasic(Customizer.withDefaults())//BasicAuthenticationFilter
 
                 .authorizeHttpRequests((requests) -> {
