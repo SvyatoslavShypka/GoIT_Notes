@@ -35,7 +35,7 @@
           </thead>
           <tbody>
             <tr th:each="user : ${users}">
-              <td scope="row" th:text="${user.username}"></td>
+              <td th:text="${user.username}"></td>
               <td>
                 <a
                   th:href="@{/user/edit/{id}(id=${user.id})}"
@@ -49,8 +49,8 @@
                   th:href="@{/user/delete/{id}(id=${user.id})}"
                   type="button"
                   class="btn btn-danger"
-                  >Delete</a
-                >
+                  >Delete
+                </a>
               </td>
             </tr>
           </tbody>

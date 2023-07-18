@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.web.configurers.LogoutConf
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 
 @Configuration
 @EnableWebSecurity
@@ -21,15 +20,8 @@ public class WebSecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
-//        requestCache.setMatchingRequestParameterName("");
 
         http
-/*
-                .requestCache((cache) -> cache
-                        .requestCache(requestCache)
-                )
-*/
                 .httpBasic(Customizer.withDefaults())//BasicAuthenticationFilter
 
                 .authorizeHttpRequests((requests) -> {

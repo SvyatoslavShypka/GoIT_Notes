@@ -53,8 +53,13 @@ public class UserAccountService implements UserDetailsService {
         userAccountRepository.save(userAccountEntityByUsername);
     }
 
-    public void deleteUser(String username) {
-        userAccountRepository.deleteByUsername(username);
+    public void deleteById(Long id) {
+        userAccountRepository.deleteById(id);
+    }
+
+    public UserAccountDto getById(Long id) {
+        return accountMapper.mapEntityToDto(userAccountRepository.findById(id)
+                .orElse(new UserAccountEntity()));
     }
 
     private void encodePassword(UserAccountEntity userAccountEntity) {
